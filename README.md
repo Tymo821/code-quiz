@@ -25,5 +25,5 @@ https://github.com/Tymo821/code-quiz
 ## Screenshot of deployment
 ![Alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/tymo/Documents/bootcamp/code-quiz/screenshot1.png?version%3D1673376768202)
 
-![Alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/tymo/Documents/bootcamp/code-quiz/Screenshot%202023-01-10%20at%201.12.44%20PM.png?version%3D1673376884317)
+![Alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/tymo/Documents/bootcamp/code-quiz/screenshot2.png?version%3D1673376884317)
 
