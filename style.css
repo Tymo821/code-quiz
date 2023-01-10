@@ -1,7 +1,7 @@
 /* CSS variables */
 :root {
-    --header-background: #93a2f7;
-    --button-color: #3551ee;
+    --nav-text: #cc77ee;
+    --button-color: #7149df;
     --button-text: #ffff;
     }
 
@@ -12,18 +12,17 @@
 
   /* Element Selector */
     body {
-        font-family: Arial;
-        margin: 0;
+        font-family: sans-serif;
     }
 
     header {
+        color: var(--nav-text);
         display: flex;
         justify-content: space-between;
-        background-color: var(--header-background);
         font-size: large;
         padding: 10px;
     }
-
+    
     main {
         display: flex;
         align-items: center;
@@ -38,10 +37,6 @@
         align-items: center;
         justify-content: center;
         width: 40vw;
-    }
-
-    .high-scores {
-        text-decoration: underline;
     }
 
     .user-button {
@@ -61,7 +56,7 @@
 
   /* Pseudo Classes */
     button:hover {
-        opacity: 0.7;
+        opacity: 0.5;
         cursor: pointer;
     }
 
@@ -73,7 +68,7 @@
     nav:hover,
     nav:active,
     nav:focus {
-        opacity: 0.7;
+        opacity: 0.5;
         cursor: pointer;
         text-decoration: none;
     }
