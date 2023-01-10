@@ -38,37 +38,40 @@ const answers = [
     ["class","break","this","var"]];
 
 /*Functions*/
-
 //function to load locally stored values
-function init() {
-    var scores = JSON.parse(localStorage.getItem("scores"));
+const init = () => {
+    const scores = JSON.parse(localStorage.getItem('scores'));
     if (scores) {
         listEl.hide();
         allhighscores = scores;
-        scores.forEach(score => {
-            var scoreEl = $("<li>");
+        scores.forEach((score) => {
+            const scoreEl = $('<li>');
             scoreEl.text(score);
             listEl.append(scoreEl);
         });
     }
-}
+};
 
 //function to manage the timer
-function setTime() {
-    var timer = setInterval(function() {
+
+const setTime = () => {
+    const timer = setInterval(() => {
         if (secondsLeft === 0 || questionIndex === 5) {
             clearInterval(timer);
             gameOver();
         } else {
             secondsLeft = Math.max(secondsLeft - 1, 0);
-            timerEl.text("Time: " + secondsLeft);
+            timerEl.text(`Time: ${secondsLeft}`);
         }
     }, 1000);
-}
+};
+
+
+
 
 //function to start the quiz by calling initial functions
-function startQuiz() {
-    highscoresEl.off("click", viewHighscores);
+const startQuiz = () => {
+    highscoresEl.off('click', viewHighscores);
     paragraphEl.hide();
     buttonStart.hide();
     answersEl.show();
@@ -78,33 +81,43 @@ function startQuiz() {
     resetState();
     nextQuestion(answers[0]);
     headingEl.text(questions[questionIndex]);
-    resultEl.text("");
-}
-function resetState() {
+    resultEl.text('');
+};
+
+
+const resetState = () => {
     questionIndex = 0;
-    secondsLeft = 75;
-}
+    secondsLeft = 90;
+};
+
+
 
 //function to render quiz container and dynamic button elements
-function renderQuiz() {
+
+const renderQuiz = () => {
     state.quiz = true;
     nextQuestion(answers[questionIndex]);
-    }
+};
 
-function nextQuestion(currentArray) {
+
+
+const nextQuestion = (currentArray) => {
     headingEl.text(questions[questionIndex]);
     answersEl.empty();
     currentArray.forEach((answer, index) => {
-        var answerBtn = $("<button>");
+        const answerBtn = $("<button>");
         answerBtn.addClass("user-button");
         answerBtn.attr("a-button", index);
         answerBtn.text(answer);
         answersEl.append(answerBtn);
     });
-}  
+};
+
+
 
 //function used to move to game over container
-function gameOver() {
+
+const gameOver = () => {
     // Set the timer text
     timerEl.text(`Time: ${secondsLeft}`);
 
@@ -122,10 +135,12 @@ function gameOver() {
     if (!state.gameover) {
         renderGameover();
     }
-}
+};
+
 
   // Function used to render the game over container
-function renderGameover() {
+
+const renderGameover = () => {
     // Create and append the form and submit button
     const myForm = $('<input>');
     const myBtn = $('<button>');
@@ -141,10 +156,12 @@ function renderGameover() {
 
     // Set the gameover state to true
     state.gameover = true;
-}
+};
+
 
 // Function to append user inputted highscore
-function handleSubmitForm(event) {
+
+const handleSubmitForm = (event) => {
     event.preventDefault();
 
     var inputEl = $('.form-input');
@@ -155,10 +172,12 @@ function handleSubmitForm(event) {
     localStorage.setItem('scores', JSON.stringify(allhighscores)); // Saves highscores to local storage
     
     viewHighscores();
-}
+};
+
 
 // Function to view high scores
-function viewHighscores() {
+
+const viewHighscores = () => {
     headingEl.text('Highscores');
     if (!state.highscores) {
         renderHighscores();
@@ -171,10 +190,11 @@ function viewHighscores() {
     resultEl.hide();
     formEl.hide();
     buttonStart.hide();
-}
+};
 
 // Function to render highscore container
-function renderHighscores() {
+
+const renderHighscores = () => {
     var scoreEl = $('<ul>');
     listEl.append(scoreEl);
 
@@ -191,11 +211,14 @@ function renderHighscores() {
     highscoresCardEl.append(clearBtn);
 
     state.highscores = true;
-}
+};
+
+
 // Event listeners
-buttonStart.on('click', startQuiz); // Listens for start button click
-answersEl.on('click', '.user-button', function(event) { // Listens for answer button clicks
-    // Check if user selected the correct answer for the current question
+
+buttonStart.on('click', startQuiz); 
+
+answersEl.on('click', '.user-button', (event) => { 
     if (questionIndex === 0) {
         if ($(event.target).attr('a-button') == 1) {
             resultEl.text('Correct!');
@@ -236,17 +259,17 @@ answersEl.on('click', '.user-button', function(event) { // Listens for answer bu
             resultEl.text('Wrong!');
         }
         questionIndex++;
-    } else { // If not last question, move to next question
+    } else { 
         questionIndex++;
         nextQuestion(answers[questionIndex]);
     }
 });
 
-formEl.on('submit', handleSubmitForm); // Event listener for form submission
+formEl.on('submit', handleSubmitForm); 
 
-highscoresEl.on('click', viewHighscores); // Event listener for view highscores
+highscoresEl.on('click', viewHighscores);
 
-highscoresCardEl.on('click', function(event) { // Event listener for buttons on view highscore container
+highscoresCardEl.on('click', (event) => {
     if ($(event.target).attr('id') == 'back') {
         highscoresCardEl.hide();
         listEl.hide();
@@ -254,7 +277,7 @@ highscoresCardEl.on('click', function(event) { // Event listener for buttons on 
         paragraphEl.show();
         paragraphEl.text('Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your time by ten seconds!');
         buttonStart.show();
-        highscoresEl.on('click', viewHighscores); // Event listener for view highscores
+        highscoresEl.on('click', viewHighscores); 
     }
 
     if ($(event.target).attr('id') == 'clear') {

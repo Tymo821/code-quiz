@@ -3,72 +3,75 @@
     --nav-text: #cc77ee;
     --button-color: #7149df;
     --button-text: #ffff;
-    }
+}
 
   /* Universal Selector */
-  * {
-    box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
   /* Element Selector */
-    body {
-        font-family: sans-serif;
-    }
 
-    header {
+
+header {
         color: var(--nav-text);
         display: flex;
         justify-content: space-between;
         font-size: large;
         padding: 10px;
-    }
+}
     
-    main {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 80vh;
-    }
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+body {
+  font-family: sans-serif;
+}
 
   /* Class Selectors */
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 40vw;
-    }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40vw;
+}
 
-    .user-button {
-        background-color: var(--button-color);
-        color: var(--button-text);
-        margin: 0.25rem;
-    }
+.user-button {
+  color: var(--button-text);
+  background-color: var(--button-color);
+  margin: 0.25rem;
+}
 
   /* Identifiers */
-    #answers {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        min-height: 30vh;
-    }
-
+#answers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 30vh;
+}
+    
   /* Pseudo Classes */
-    button:hover {
-        opacity: 0.5;
-        cursor: pointer;
-    }
+nav:hover,
+nav:active,
+nav:focus {
+  opacity: 0.8;
+  cursor: pointer;
+  text-decoration: none;
+}
 
-    button:active {
-        background-color: var(--button-text);
-        color: var(--button-color);
-    }
+button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
 
-    nav:hover,
-    nav:active,
-    nav:focus {
-        opacity: 0.5;
-        cursor: pointer;
-        text-decoration: none;
-    }
+button:active {
+  background-color: var(--button-text);
+  color: var(--button-color);
+}
+
