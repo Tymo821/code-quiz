@@ -1,10 +1,10 @@
-const buttonStart = $('#start-button');
-const timerEl = $('.timer');
+const buttonStart = $('#start-button'); // jQuery object for the start button element
+const timerEl = $('.timer'); // jQuery object for the timer element
 const startEl = $('#start');
 const quizEl = $('#quiz');
-const headingEl = $('.heading');
-const answersEl = $('#answers');
-const paragraphEl = $('.paragraph');
+const headingEl = $('.heading'); // jQuery object for the heading element that displays the current question
+const answersEl = $('#answers'); // jQuery object for the element that contains the answer choices
+const paragraphEl = $('.paragraph'); 
 const containerEl = $('.container');
 const resultEl = $('#result');
 const formEl = $('#submit-form');
@@ -12,17 +12,18 @@ const highscoresEl = $('.highscores');
 const highscoresCardEl = $('#highscores');
 const listEl = $('#list');
 
+// Initial state of the quiz, highscores and gameover
 const state = {
     quiz: false,
     highscores: false,
     gameover: false,
 };
 
-let questionIndex = 0;
-let secondsLeft = 75;
-let allhighscores = [];
+let questionIndex = 0; // Index of the current question
+let secondsLeft = 90; // Number of seconds remaining for the quiz
+let allhighscores = []; // Array to store all the high scores
 
-//Hard coded Q&A
+//Questions & Answers arrays
 const questions = [
     "Question 1: What language is used to style a webpage?",
     "Question 2: What primitive data type is used to describe true or false?",
@@ -38,7 +39,7 @@ const answers = [
     ["class","break","this","var"]];
 
 /*Functions*/
-//function to load locally stored values
+// Initialization function that retrieves any existing high scores from local storage and displays them on the page
 const init = () => {
     const scores = JSON.parse(localStorage.getItem('scores'));
     if (scores) {
@@ -52,8 +53,7 @@ const init = () => {
     }
 };
 
-//function to manage the timer
-
+// Function to manage the timer, it starts a countdown timer and calls the gameOver function if the time is up or all questions are answered
 const setTime = () => {
     const timer = setInterval(() => {
         if (secondsLeft === 0 || questionIndex === 5) {
@@ -66,10 +66,7 @@ const setTime = () => {
     }, 1000);
 };
 
-
-
-
-//function to start the quiz by calling initial functions
+// Function to start the quiz by calling initial functions
 const startQuiz = () => {
     highscoresEl.off('click', viewHighscores);
     paragraphEl.hide();
@@ -84,7 +81,7 @@ const startQuiz = () => {
     resultEl.text('');
 };
 
-
+// Function to reset the quiz state to the initial values
 const resetState = () => {
     questionIndex = 0;
     secondsLeft = 90;
@@ -92,15 +89,13 @@ const resetState = () => {
 
 
 
-//function to render quiz container and dynamic button elements
-
+// Function to render quiz container and dynamic button elements
 const renderQuiz = () => {
     state.quiz = true;
     nextQuestion(answers[questionIndex]);
 };
 
-
-
+// Function to display the next question and answer choices
 const nextQuestion = (currentArray) => {
     headingEl.text(questions[questionIndex]);
     answersEl.empty();
@@ -113,12 +108,10 @@ const nextQuestion = (currentArray) => {
     });
 };
 
-
-
-//function used to move to game over container
-
+// Function used to move to game over container, it also updates the final score
 const gameOver = () => {
-    // Set the timer text
+
+    // Timer text
     timerEl.text(`Time: ${secondsLeft}`);
 
     // Update the heading and paragraph text
@@ -139,7 +132,6 @@ const gameOver = () => {
 
 
   // Function used to render the game over container
-
 const renderGameover = () => {
     // Create and append the form and submit button
     const myForm = $('<input>');
@@ -160,12 +152,11 @@ const renderGameover = () => {
 
 
 // Function to append user inputted highscore
-
 const handleSubmitForm = (event) => {
     event.preventDefault();
 
-    var inputEl = $('.form-input');
-    var newScoreEl = $('<li>');
+    const inputEl = $('.form-input');
+    const newScoreEl = $('<li>');
     newScoreEl.text(`${inputEl.val()} - ${secondsLeft}`);
     listEl.append(newScoreEl);
     allhighscores.push(`${inputEl.val()} - ${secondsLeft}`); // Saves highscore to global array
@@ -195,16 +186,16 @@ const viewHighscores = () => {
 // Function to render highscore container
 
 const renderHighscores = () => {
-    var scoreEl = $('<ul>');
+    const scoreEl = $('<ul>');
     listEl.append(scoreEl);
 
-    var backBtn = $('<button>');
+    const backBtn = $('<button>');
     backBtn.addClass('user-button');
     backBtn.attr('id', 'back');
     backBtn.text('Go Back');
     highscoresCardEl.append(backBtn);
 
-    var clearBtn = $('<button>');
+    const clearBtn = $('<button>');
     clearBtn.addClass('user-button');
     clearBtn.attr('id', 'clear');
     clearBtn.text('Clear Highscores');

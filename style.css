@@ -1,8 +1,7 @@
-/* CSS variables */
 :root {
-    --nav-text: #cc77ee;
-    --button-color: #7149df;
-    --button-text: #ffff;
+  --nav-text: #cc77ee;
+  --button-color: #7149df;
+  --button-text: #ffff;
 }
 
   /* Universal Selector */
@@ -10,26 +9,24 @@
   box-sizing: border-box;
 }
 
-  /* Element Selector */
-
-
+  /* Element Selectors */
 header {
-        color: var(--nav-text);
-        display: flex;
-        justify-content: space-between;
-        font-size: large;
-        padding: 10px;
+  color: var(--nav-text);
+  display: flex;
+  justify-content: space-between;
+  font-size: large;
+  padding: 10px;
 }
-    
+
+body {
+  font-family: sans-serif;
+}
+
 main {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 80vh;
-}
-
-body {
-  font-family: sans-serif;
 }
 
   /* Class Selectors */
@@ -38,13 +35,17 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 40vw;
+  width: 35vw;
 }
 
 .user-button {
   color: var(--button-text);
   background-color: var(--button-color);
-  margin: 0.25rem;
+  margin: 0.3rem;
+}
+
+.timer{
+  color: black
 }
 
   /* Identifiers */
@@ -55,7 +56,7 @@ body {
   justify-content: center;
   min-height: 30vh;
 }
-    
+
   /* Pseudo Classes */
 nav:hover,
 nav:active,
@@ -66,12 +67,11 @@ nav:focus {
 }
 
 button:hover {
-    opacity: 0.8;
-    cursor: pointer;
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 button:active {
   background-color: var(--button-text);
   color: var(--button-color);
 }
-
