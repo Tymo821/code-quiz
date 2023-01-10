@@ -1,0 +1,79 @@
+/* CSS variables */
+:root {
+    --header-background: #93a2f7;
+    --button-color: #3551ee;
+    --button-text: #ffff;
+    }
+
+  /* Universal Selector */
+  * {
+    box-sizing: border-box;
+    }
+
+  /* Element Selector */
+    body {
+        font-family: Arial;
+        margin: 0;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--header-background);
+        font-size: large;
+        padding: 10px;
+    }
+
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+    }
+
+  /* Class Selectors */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 40vw;
+    }
+
+    .high-scores {
+        text-decoration: underline;
+    }
+
+    .user-button {
+        background-color: var(--button-color);
+        color: var(--button-text);
+        margin: 0.25rem;
+    }
+
+  /* Identifiers */
+    #answers {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        min-height: 30vh;
+    }
+
+  /* Pseudo Classes */
+    button:hover {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+    button:active {
+        background-color: var(--button-text);
+        color: var(--button-color);
+    }
+
+    nav:hover,
+    nav:active,
+    nav:focus {
+        opacity: 0.7;
+        cursor: pointer;
+        text-decoration: none;
+    }
