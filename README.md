@@ -18,6 +18,7 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 ## Deployed Url
+https://tymo821.github.io/code-quiz/
 
 ## Github Repository
 https://github.com/Tymo821/code-quiz
